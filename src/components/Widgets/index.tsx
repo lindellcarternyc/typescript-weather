@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import Widget from '../Widget'
+import ForecastWidget from './components/ForecastWidget'
+import Widget from './components/Widget'
 
 export default (): JSX.Element => {
   return (
@@ -11,7 +12,7 @@ export default (): JSX.Element => {
         padding: '0.5rem'
       }}
     >
-      <Widget title="Forecast" />
+      <ForecastWidget />
       <Widget title="Details" />
       <Widget title="Map" />
       <Widget title="Precipitation" />
