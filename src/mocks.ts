@@ -1,4 +1,10 @@
-import { IDailyForecastItem, IForecast, IHourlyForecastItem,  } from './types'
+import {
+  ICondition,
+  IDailyForecastItem, 
+  IDetails,
+  IForecast, 
+  IHourlyForecastItem, 
+} from './types'
 
 const MockHourlyForecast: IHourlyForecastItem[] = []
 for ( let i = 0; i < 24; i++ ) {
@@ -23,4 +29,20 @@ for ( let i = 0; i < 10; i++ ) {
 export const MockForecast: IForecast = {
   daily: MockDailyForecast,
   hourly: MockHourlyForecast
+}
+
+export const MockConditions: ICondition[] = [
+  {name: 'Feels Like', data: '50*'},
+  {name: 'Humidity', data: '90%'},
+  {name: 'Visibility', data: '4 mi'},
+  {name: 'UV Index', data: 'Low 1'}
+]
+
+export const MockDetails: IDetails = {
+  conditions: MockConditions,
+  descriptions: [
+    'Description 1 looks like this',
+    'And this is description 2'
+  ],
+  icon: 'cloudy'
 }
