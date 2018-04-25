@@ -1,6 +1,11 @@
 import * as React from 'react'
 
-export default (props: { name: string }): JSX.Element => {
-  const className = 'wi wi-' + props.name
-  return <i className={className} />
+interface IIconProps {
+  name: string
+  fontSize?: string
+}
+export default (props: IIconProps): JSX.Element => {
+  const { name, fontSize } = props
+  const className = 'wi wi-' + name
+  return <i className={className} style={{fontSize}} />
 }
