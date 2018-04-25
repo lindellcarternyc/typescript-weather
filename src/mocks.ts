@@ -20,9 +20,10 @@ for ( let i = 0; i < 24; i++ ) {
 }
 
 const MockDailyForecast: IDailyForecastItem[] = []
+const Days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 for ( let i = 0; i < 10; i++ ) {
   MockDailyForecast.push({
-    day: 'Monday',
+    day: Days[i % Days.length],
     icon: 'cloudy',
     temperature: {
       hi: '65', lo: '55'
@@ -61,17 +62,17 @@ export const MockPrecipitation: IPrecipitation = {
     {
       chance: '100%',
       icon: 'cloudy',
-      time: 'Afternoon'
+      time: 'Evening'
     },
     {
       chance: '100%',
       icon: 'cloudy',
-      time: 'Afternoon'
+      time: 'Overnight'
     },
     {
       chance: '100%',
       icon: 'cloudy',
-      time: 'Afternoon'
+      time: 'Morning'
     }
   ]
 }
