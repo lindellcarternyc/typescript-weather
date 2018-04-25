@@ -5,7 +5,6 @@ import Forecast from './components/Forecast'
 import Hero from './components/Hero'
 import MenuBar from './components/Menu-Bar'
 import Widget from './components/Widget'
-// import Widgets from './components/Widgets'
 
 // Mocks
 import { MockForecast } from './mocks'
