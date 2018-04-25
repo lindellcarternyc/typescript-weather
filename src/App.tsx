@@ -5,6 +5,7 @@ import Details from './components/Details'
 import Forecast from './components/Forecast'
 import Grid from './components/Grid'
 import Hero from './components/Hero'
+import Map from './components/Map'
 import MenuBar from './components/Menu-Bar'
 import Widget from './components/Widget'
 
@@ -26,7 +27,7 @@ class App extends React.Component {
         <Grid>
           <Forecast forecast={MockForecast} />
           <Details details={MockDetails} />
-          <Widget title="Map" />
+          <Map />
           <Widget title="Precipitation" />
           <Widget title="Wind & Pressure" />
           <Widget title="Sun & Moon" />
