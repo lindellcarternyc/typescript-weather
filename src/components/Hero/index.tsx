@@ -1,6 +1,11 @@
 import * as React from 'react'
 
-export default (): JSX.Element => {
+import HeroWeather from './components/Hero-Weather'
+
+import { IWeather } from '../../types'
+
+export default (props: { weather: IWeather }): JSX.Element => {
+  const { weather } = props
   return (
     <div
       style={{
@@ -13,7 +18,7 @@ export default (): JSX.Element => {
         paddingRight: '8px',
       }}
     >
-      <div>Weather</div>
+      <HeroWeather { ...weather }/>
       <div>Image details</div>
     </div>
   )
