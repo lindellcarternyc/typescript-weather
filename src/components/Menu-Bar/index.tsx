@@ -9,8 +9,11 @@ export default (): JSX.Element => {
     <div
       style={{
         display: 'flex',
+        height: '48px',
         justifyContent: 'space-between',
-        padding: '8px'
+        padding: '8px',
+        position: 'fixed',
+        width: '100%'
       }}
     >
       <Toggle />
