@@ -1,9 +1,13 @@
 import {
   ICondition,
+  ICurrentConditions,
   IDailyForecastItem, 
   IDetails,
   IForecast, 
-  IHourlyForecastItem, 
+  IHourlyForecastItem,
+  IPrecipitation,
+  ITemperatures,
+  IWeather
 } from './types'
 
 const MockHourlyForecast: IHourlyForecastItem[] = []
@@ -45,4 +49,45 @@ export const MockDetails: IDetails = {
     'And this is description 2'
   ],
   icon: 'cloudy'
+}
+
+export const MockPrecipitation: IPrecipitation = {
+  items: [
+    {
+      chance: '100%',
+      icon: 'cloudy',
+      time: 'Afternoon'
+    },
+    {
+      chance: '100%',
+      icon: 'cloudy',
+      time: 'Afternoon'
+    },
+    {
+      chance: '100%',
+      icon: 'cloudy',
+      time: 'Afternoon'
+    },
+    {
+      chance: '100%',
+      icon: 'cloudy',
+      time: 'Afternoon'
+    }
+  ]
+}
+
+const MockCurrentConditions: ICurrentConditions = {
+  description: 'Cloudy',
+  icon: 'cloudy'
+}
+
+const MockTemperatures: ITemperatures = {
+  current: '75',
+  hi: '80',
+  lo: '65'
+}
+
+export const MockHeroWeather: IWeather = {
+  conditions: MockCurrentConditions,
+  temperatures: MockTemperatures
 }
