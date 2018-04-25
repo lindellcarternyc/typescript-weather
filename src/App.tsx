@@ -7,10 +7,11 @@ import Grid from './components/Grid'
 import Hero from './components/Hero'
 import Map from './components/Map'
 import MenuBar from './components/Menu-Bar'
+import Precipitation from './components/Precipitation'
 import Widget from './components/Widget'
 
 // Mocks
-import { MockDetails,  MockForecast, } from './mocks'
+import { MockDetails,  MockForecast, MockPrecipitation } from './mocks'
 
 class App extends React.Component {
   public render() {
@@ -28,7 +29,7 @@ class App extends React.Component {
           <Forecast forecast={MockForecast} />
           <Details details={MockDetails} />
           <Map />
-          <Widget title="Precipitation" />
+          <Precipitation precipitation={MockPrecipitation}/>
           <Widget title="Wind & Pressure" />
           <Widget title="Sun & Moon" />
         </Grid>
