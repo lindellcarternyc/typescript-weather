@@ -1,11 +1,15 @@
 import * as React from 'react'
 
-export default (): JSX.Element => {
+interface IDetailsProps {
+  city: string
+}
+export default (props: IDetailsProps): JSX.Element => {
+  const { city } = props
   return (
     <div
       style={{textAlign: 'center'}}
     >
-      <p>New York</p>
+      <p>{city}</p>
       <p
         style={{
           fontSize: '0.85rem'

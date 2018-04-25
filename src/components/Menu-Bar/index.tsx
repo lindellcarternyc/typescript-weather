@@ -4,7 +4,11 @@ import AddLocationButton from './components/Add-Location-Button'
 import Details from './components/Details'
 import Toggle from './components/Toggle'
 
-export default (): JSX.Element => {
+interface IMenuBarProps {
+  city: string
+}
+export default (props: IMenuBarProps): JSX.Element => {
+  const { city } = props
   return (
     <div
       style={{
@@ -17,7 +21,7 @@ export default (): JSX.Element => {
       }}
     >
       <Toggle />
-      <Details />
+      <Details city={city} />
       <AddLocationButton />
     </div>
   )
