@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 // Components
+import Details from './components/Details'
 import Forecast from './components/Forecast'
 import Grid from './components/Grid'
 import Hero from './components/Hero'
@@ -8,7 +9,7 @@ import MenuBar from './components/Menu-Bar'
 import Widget from './components/Widget'
 
 // Mocks
-import { MockForecast } from './mocks'
+import { MockDetails,  MockForecast, } from './mocks'
 
 class App extends React.Component {
   public render() {
@@ -24,7 +25,7 @@ class App extends React.Component {
         <Hero />
         <Grid>
           <Forecast forecast={MockForecast} />
-          <Widget title="Details" />
+          <Details details={MockDetails} />
           <Widget title="Map" />
           <Widget title="Precipitation" />
           <Widget title="Wind & Pressure" />
