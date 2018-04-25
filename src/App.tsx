@@ -11,7 +11,7 @@ import Precipitation from './components/Precipitation'
 import Widget from './components/Widget'
 
 // Mocks
-import { MockDetails,  MockForecast, MockPrecipitation } from './mocks'
+import { MockDetails, MockForecast, MockHeroWeather, MockPrecipitation } from './mocks'
 
 class App extends React.Component {
   public render() {
@@ -24,7 +24,7 @@ class App extends React.Component {
         }}
       >
         <MenuBar />
-        <Hero />
+        <Hero weather={MockHeroWeather} />
         <Grid>
           <Forecast forecast={MockForecast} />
           <Details details={MockDetails} />
