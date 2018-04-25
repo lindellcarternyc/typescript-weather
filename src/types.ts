@@ -28,3 +28,29 @@ export interface IDetails {
   descriptions: string[]
   icon: string
 }
+
+export interface IPrecipitationItem {
+  time: string
+  icon: string
+  chance: string
+}
+
+export interface IPrecipitation {
+  items: IPrecipitationItem[]
+}
+
+export interface ITemperatures {
+  current: string
+  hi: string
+  lo: string
+}
+
+export interface ICurrentConditions {
+  description: string
+  icon: string
+}
+
+export interface IWeather {
+  conditions: ICurrentConditions
+  temperatures: ITemperatures
+}
