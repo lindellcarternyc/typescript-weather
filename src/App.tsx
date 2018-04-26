@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import * as moment from 'moment-timezone'
+
 // Components
 import Main from './components/Main'
 import MenuBar from './components/Menu-Bar'
@@ -10,23 +12,50 @@ import { MockDetails, MockForecast, MockHeroWeather, MockPrecipitation } from '.
 import * as LocationService from './location-service'
 
 interface IAppState {
-  city: string | null
+  city: string
+  time: string
 }
 class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
     super(props)
 
     this.state = { 
-      city: null,
+      city: '...',
+      time: '...'
     }
   }
 
   public componentDidMount() {
+    this.updateLocation()
+    this.updateTime()
+  }
+
+  public render() {
+    return (
+      <div className="App"
+        style={{
+          background: '#202a25',
+          color: 'white',
+          position: 'relative'
+        }}
+      >
+        <MenuBar city={this.state.city} time={this.state.time} />
+        <Main 
+          details={MockDetails}
+          forecast={MockForecast}
+          weather={MockHeroWeather}
+          precipitation={MockPrecipitation}
+        />
+      </div>
+    )
+  }
+
+  private updateLocation(mock: boolean = true) {
     LocationService.getCurrentPosition()
       .then(pos => {
         const { coords } = pos
         LocationService.getCityFromLatitudeLongitude(
-          coords.latitude, coords.longitude, false
+          coords.latitude, coords.longitude, mock
         ).then(city => {
           // tslint:disable-next-line:no-console
           console.log(city)
@@ -40,24 +69,12 @@ class App extends React.Component<{}, IAppState> {
       })
   }
 
-  public render() {
-    return (
-      <div className="App"
-        style={{
-          background: '#202a25',
-          color: 'white',
-          position: 'relative'
-        }}
-      >
-        <MenuBar city={this.state.city || 'Loading...'} />
-        <Main 
-          details={MockDetails}
-          forecast={MockForecast}
-          weather={MockHeroWeather}
-          precipitation={MockPrecipitation}
-        />
-      </div>
-    )
+  private updateTime = () => {
+    const zone = moment.tz.guess()
+    const time = moment().tz(zone).format('hh:mm z')
+    this.setState({ time }, () => {
+      window.setTimeout(this.updateTime, 1000)
+    })
   }
 }
 

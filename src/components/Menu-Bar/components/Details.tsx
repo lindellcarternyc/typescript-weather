@@ -2,9 +2,10 @@ import * as React from 'react'
 
 interface IDetailsProps {
   city: string
+  time: string
 }
 export default (props: IDetailsProps): JSX.Element => {
-  const { city } = props
+  const { city, time } = props
   return (
     <div
       style={{textAlign: 'center'}}
@@ -14,7 +15,7 @@ export default (props: IDetailsProps): JSX.Element => {
         style={{
           fontSize: '0.85rem'
         }}
-      >11:48 AM EDT</p>
+      >{time}</p>
     </div>
   )
 }
