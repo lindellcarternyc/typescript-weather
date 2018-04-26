@@ -13,7 +13,39 @@ import Widget from './components/Widget'
 // Mocks
 import { MockDetails, MockForecast, MockHeroWeather, MockPrecipitation } from './mocks'
 
-class App extends React.Component {
+import * as LocationService from './location-service'
+
+interface IAppState {
+  city: string | null
+}
+class App extends React.Component<{}, IAppState> {
+  constructor(props: {}) {
+    super(props)
+
+    this.state = { 
+      city: null,
+    }
+  }
+
+  public componentDidMount() {
+    LocationService.getCurrentPosition()
+      .then(pos => {
+        const { coords } = pos
+        LocationService.getCityFromLatitudeLongitude(
+          coords.latitude, coords.longitude, false
+        ).then(city => {
+          // tslint:disable-next-line:no-console
+          console.log(city)
+          this.setState({ city })
+        }).catch(err => {
+          throw err
+        })
+      })
+      .catch(err => {
+        throw err
+      })
+  }
+
   public render() {
     return (
       <div className="App"
@@ -23,7 +55,7 @@ class App extends React.Component {
           position: 'relative'
         }}
       >
-        <MenuBar />
+        <MenuBar city={this.state.city || 'Loading'} />
         <Hero weather={MockHeroWeather} />
         <Grid>
           <Forecast forecast={MockForecast} />
