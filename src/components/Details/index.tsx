@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import Box from '../Box'
 import Icon from '../Icon'
 import Widget from '../Widget'
 
@@ -25,14 +26,11 @@ export default (props: IDetailsProps): JSX.Element => {
   const { conditions, descriptions } = props.details
   return (
     <Widget title="Details">
-      <div 
-        style={{
+      <Box
+        styles={{
           alignItems: 'center',
           display: 'flex',
           justifyContent: 'space-around',
-          margin: '1rem auto 0',
-          maxWidth: '600px',
-          width: '100%'
         }}
       >
         <div
@@ -44,7 +42,7 @@ export default (props: IDetailsProps): JSX.Element => {
           <Icon name="cloudy" fontSize="4rem" />
         </div>
         <DetailsConditions conditions={conditions}/>
-      </div>
+      </Box>
       <div 
         style={{
           borderTop: '1px solid white',

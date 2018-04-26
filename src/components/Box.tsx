@@ -2,7 +2,8 @@ import * as React from 'react'
 
 interface IBoxProps {
   children?: React.ReactNode
-  styles?: { 
+  styles?: {
+    alignItems?: 'center'
     display?: 'flex'
     justifyContent?: string
   }
