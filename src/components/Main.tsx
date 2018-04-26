@@ -9,21 +9,22 @@ import Forecast from './Forecast'
 import Hero from './Hero'
 import Map from './Map'
 import Precipitation from './Precipitation'
-import Widget from './Widget'
+import SunAndMoon from './Sun-And-Moon'
 import WindAndPressure from './Wind-And-Pressure'
 
 // Types
-import { IDetails, IForecast, IPrecipitation, IWeather, IWindAndPressure } from '../types'
+import { IDetails, IForecast, IPrecipitation, ISunAndMoonDetails, IWeather, IWindAndPressure } from '../types'
 
 interface IMainProps {
   details: IDetails
   forecast: IForecast
   weather: IWeather
   windAndPressure: IWindAndPressure
-  precipitation: IPrecipitation
+  precipitation: IPrecipitation,
+  sunAndMoon: ISunAndMoonDetails
 }
 export default (props: IMainProps): JSX.Element => {
-  const { details, forecast, precipitation, weather, windAndPressure } = props
+  const { details, forecast, precipitation, sunAndMoon, weather, windAndPressure } = props
   return (
     <>
       <Hero weather={weather} />
@@ -33,7 +34,7 @@ export default (props: IMainProps): JSX.Element => {
         <Map />
         <Precipitation precipitation={precipitation}/>
         <WindAndPressure { ...windAndPressure } />
-        <Widget title="Sun & Moon" />
+        <SunAndMoon { ...sunAndMoon } />
       </Grid>
     </>
   )
