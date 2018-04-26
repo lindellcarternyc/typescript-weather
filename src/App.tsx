@@ -7,7 +7,7 @@ import Main from './components/Main'
 import MenuBar from './components/Menu-Bar'
 
 // Mocks
-import { MockDetails, MockForecast, MockHeroWeather, MockPrecipitation } from './mocks'
+import { MockDetails, MockForecast, MockHeroWeather, MockPrecipitation, MockWindAndPressure} from './mocks'
 
 import * as LocationService from './location-service'
 
@@ -45,6 +45,7 @@ class App extends React.Component<{}, IAppState> {
           forecast={MockForecast}
           weather={MockHeroWeather}
           precipitation={MockPrecipitation}
+          windAndPressure={MockWindAndPressure}
         />
       </div>
     )
