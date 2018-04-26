@@ -6,6 +6,9 @@
 # testing
 /coverage
 
+# secret
+/src/config.ts
+
 # production
 /build
 
