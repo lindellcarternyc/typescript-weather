@@ -30,7 +30,7 @@ export default (props: IDetailsProps): JSX.Element => {
           alignItems: 'center',
           display: 'flex',
           justifyContent: 'space-around',
-          marginTop: '1rem',
+          margin: '1rem auto 0',
           maxWidth: '600px',
           width: '100%'
         }}
