@@ -5,7 +5,10 @@ import {
   IDetails,
   IForecast, 
   IHourlyForecastItem,
+  IMoonDetails,
   IPrecipitation,
+  ISunAndMoonDetails,
+  ISunDetails,
   ITemperatures,
   IWeather,
   IWindAndPressure
@@ -97,4 +100,18 @@ export const MockHeroWeather: IWeather = {
 export const MockWindAndPressure: IWindAndPressure  = {
   pressure: '29.68 in HG',
   wind: '14mph W'
+}
+
+const MockMoonDetails: IMoonDetails = {
+  icon: 'moon-waxing-crescent-3',
+  phase: 'Waxing Crescent'
+}
+const MockSunDetails: ISunDetails = {
+  sunrise: '6:01',
+  sunset: '7:15'
+}
+
+export const MockSunAndMoonDetails: ISunAndMoonDetails = {
+  moonDetails: MockMoonDetails,
+  sunDetails: MockSunDetails
 }

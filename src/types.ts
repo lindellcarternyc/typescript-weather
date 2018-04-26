@@ -59,3 +59,18 @@ export interface IWindAndPressure {
   wind: string
   pressure: string
 }
+
+export interface IMoonDetails {
+  icon: string
+  phase: string
+}
+
+export interface ISunDetails {
+  sunrise: string
+  sunset: string
+}
+
+export interface ISunAndMoonDetails {
+  sunDetails: ISunDetails,
+  moonDetails: IMoonDetails
+}
