@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import Box from '../Box'
 import Widget from '../Widget'
 
 interface IWindAndPressureProps {
@@ -10,14 +11,10 @@ export default (props: IWindAndPressureProps): JSX.Element => {
   const { pressure, wind } = props
   return (
     <Widget title="Wind & Pressure">
-      <div style={{
-        border: '1px solid white',
-        margin: '1rem auto 0.5rem',
-        maxWidth: '600px'
-      }}>
+      <Box bordered>
         <div>Wind {wind}</div>
         <div>Pressure {pressure}</div>
-      </div>
+      </Box>
     </Widget>
   )
 }

@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import Box from './Box'
 import Icon from './Icon'
 import Widget from './Widget'
 
@@ -27,19 +28,14 @@ export default (props: IPrecipitationProps): JSX.Element => {
   const { precipitation } = props
   return (
     <Widget title="Precipitation">
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          margin: '0 auto',
-          maxWidth: '600px',
-          position: 'relative'
-        }}
-      >
+      <Box styles={{
+        display: 'flex',
+        justifyContent: 'space-around'
+      }}>
         {precipitation.items.map(item => {
           return <PrecipitationItem key={JSON.stringify(item)} { ...item }/>
         })}
-      </div>
+      </Box>
     </Widget>
   )
 }
