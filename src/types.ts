@@ -54,3 +54,8 @@ export interface IWeather {
   conditions: ICurrentConditions
   temperatures: ITemperatures
 }
+
+export interface IWindAndPressure {
+  wind: string
+  pressure: string
+}

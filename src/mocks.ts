@@ -7,7 +7,8 @@ import {
   IHourlyForecastItem,
   IPrecipitation,
   ITemperatures,
-  IWeather
+  IWeather,
+  IWindAndPressure
 } from './types'
 
 const MockHourlyForecast: IHourlyForecastItem[] = []
@@ -91,4 +92,9 @@ const MockTemperatures: ITemperatures = {
 export const MockHeroWeather: IWeather = {
   conditions: MockCurrentConditions,
   temperatures: MockTemperatures
+}
+
+export const MockWindAndPressure: IWindAndPressure  = {
+  pressure: '29.68 in HG',
+  wind: '14mph W'
 }
