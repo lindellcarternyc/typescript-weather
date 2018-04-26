@@ -6,9 +6,10 @@ import Toggle from './components/Toggle'
 
 interface IMenuBarProps {
   city: string
+  time: string
 }
 export default (props: IMenuBarProps): JSX.Element => {
-  const { city } = props
+  const { city, time } = props
   return (
     <div
       style={{
@@ -21,7 +22,7 @@ export default (props: IMenuBarProps): JSX.Element => {
       }}
     >
       <Toggle />
-      <Details city={city} />
+      <Details city={city} time={time} />
       <AddLocationButton />
     </div>
   )

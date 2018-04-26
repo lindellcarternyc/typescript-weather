@@ -1,14 +1,10 @@
 import * as React from 'react'
 
+import * as moment from 'moment-timezone'
+
 // Components
-import Details from './components/Details'
-import Forecast from './components/Forecast'
-import Grid from './components/Grid'
-import Hero from './components/Hero'
-import Map from './components/Map'
+import Main from './components/Main'
 import MenuBar from './components/Menu-Bar'
-import Precipitation from './components/Precipitation'
-import Widget from './components/Widget'
 
 // Mocks
 import { MockDetails, MockForecast, MockHeroWeather, MockPrecipitation } from './mocks'
@@ -16,32 +12,22 @@ import { MockDetails, MockForecast, MockHeroWeather, MockPrecipitation } from '.
 import * as LocationService from './location-service'
 
 interface IAppState {
-  city: string | null
+  city: string
+  time: string
 }
 class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
     super(props)
 
     this.state = { 
-      city: null,
+      city: '...',
+      time: '...'
     }
   }
 
   public componentDidMount() {
-    LocationService.getCurrentPosition()
-      .then(pos => {
-        const { coords } = pos
-        LocationService.getCityFromLatitudeLongitude(
-          coords.latitude, coords.longitude
-        ).then(city => {
-          this.setState({ city })
-        }).catch(err => {
-          throw err
-        })
-      })
-      .catch(err => {
-        throw err
-      })
+    this.updateLocation()
+    this.updateTime()
   }
 
   public render() {
@@ -53,18 +39,40 @@ class App extends React.Component<{}, IAppState> {
           position: 'relative'
         }}
       >
-        <MenuBar city={this.state.city || 'Loading'} />
-        <Hero weather={MockHeroWeather} />
-        <Grid>
-          <Forecast forecast={MockForecast} />
-          <Details details={MockDetails} />
-          <Map />
-          <Precipitation precipitation={MockPrecipitation}/>
-          <Widget title="Wind & Pressure" />
-          <Widget title="Sun & Moon" />
-        </Grid>
+        <MenuBar city={this.state.city} time={this.state.time} />
+        <Main 
+          details={MockDetails}
+          forecast={MockForecast}
+          weather={MockHeroWeather}
+          precipitation={MockPrecipitation}
+        />
       </div>
     )
+  }
+
+  private updateLocation(mock: boolean = true) {
+    LocationService.getCurrentPosition()
+      .then(pos => {
+        const { coords } = pos
+        LocationService.getCityFromLatitudeLongitude(
+          coords.latitude, coords.longitude, mock
+        ).then(city => {
+          this.setState({ city })
+        }).catch(err => {
+          throw err
+        })
+      })
+      .catch(err => {
+        throw err
+      })
+  }
+
+  private updateTime = () => {
+    const zone = moment.tz.guess()
+    const time = moment().tz(zone).format('hh:mm z')
+    this.setState({ time }, () => {
+      window.setTimeout(this.updateTime, 1000)
+    })
   }
 }
 
