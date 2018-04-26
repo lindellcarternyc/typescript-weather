@@ -2,12 +2,16 @@ import * as React from 'react'
 
 import { ButtonStyles } from './styles'
 
-export default (): JSX.Element => {
+interface IAddLocationButtonProps {
+  onClick: () => void
+}
+export default (props: IAddLocationButtonProps): JSX.Element => {
   return (
     <button 
       style={{
         ...ButtonStyles,
       }}
+      onClick={props.onClick}
     >
       <span
         style={{

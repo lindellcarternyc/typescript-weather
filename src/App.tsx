@@ -2,7 +2,11 @@ import * as React from 'react'
 
 import * as moment from 'moment-timezone'
 
+// Styles
+import { DarkGrey } from './styles'
+
 // Components
+import AddLocation from './components/Add-Location'
 import Main from './components/Main'
 import MenuBar from './components/Menu-Bar'
 
@@ -21,12 +25,14 @@ import * as LocationService from './location-service'
 interface IAppState {
   city: string
   time: string
+  addLocationIsOpen: boolean
 }
 class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
     super(props)
 
     this.state = { 
+      addLocationIsOpen: true,
       city: '...',
       time: '...'
     }
@@ -38,15 +44,21 @@ class App extends React.Component<{}, IAppState> {
   }
 
   public render() {
+    const {
+      addLocationIsOpen,
+      city,
+      time
+    } = this.state
     return (
       <div className="App"
         style={{
-          background: '#202a25',
+          background: DarkGrey,
           color: 'white',
           position: 'relative'
         }}
       >
-        <MenuBar city={this.state.city} time={this.state.time} />
+        <MenuBar city={city} time={time} openAddLocation={this.openAddLocation} />
+        <AddLocation isOpen={addLocationIsOpen} close={this.closeAddLocation}/>
         <Main 
           details={MockDetails}
           forecast={MockForecast}
@@ -82,6 +94,14 @@ class App extends React.Component<{}, IAppState> {
     this.setState({ time }, () => {
       window.setTimeout(this.updateTime, 1000)
     })
+  }
+
+  private openAddLocation = () => {
+    this.setState({ addLocationIsOpen: true })
+  }
+
+  private closeAddLocation = () => {
+    this.setState({ addLocationIsOpen: false })
   }
 }
 
