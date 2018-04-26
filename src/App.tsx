@@ -1,14 +1,8 @@
 import * as React from 'react'
 
 // Components
-import Details from './components/Details'
-import Forecast from './components/Forecast'
-import Grid from './components/Grid'
-import Hero from './components/Hero'
-import Map from './components/Map'
+import Main from './components/Main'
 import MenuBar from './components/Menu-Bar'
-import Precipitation from './components/Precipitation'
-import Widget from './components/Widget'
 
 // Mocks
 import { MockDetails, MockForecast, MockHeroWeather, MockPrecipitation } from './mocks'
@@ -55,16 +49,13 @@ class App extends React.Component<{}, IAppState> {
           position: 'relative'
         }}
       >
-        <MenuBar city={this.state.city || 'Loading'} />
-        <Hero weather={MockHeroWeather} />
-        <Grid>
-          <Forecast forecast={MockForecast} />
-          <Details details={MockDetails} />
-          <Map />
-          <Precipitation precipitation={MockPrecipitation}/>
-          <Widget title="Wind & Pressure" />
-          <Widget title="Sun & Moon" />
-        </Grid>
+        <MenuBar city={this.state.city || 'Loading...'} />
+        <Main 
+          details={MockDetails}
+          forecast={MockForecast}
+          weather={MockHeroWeather}
+          precipitation={MockPrecipitation}
+        />
       </div>
     )
   }
