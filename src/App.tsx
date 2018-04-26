@@ -32,10 +32,8 @@ class App extends React.Component<{}, IAppState> {
       .then(pos => {
         const { coords } = pos
         LocationService.getCityFromLatitudeLongitude(
-          coords.latitude, coords.longitude, false
+          coords.latitude, coords.longitude
         ).then(city => {
-          // tslint:disable-next-line:no-console
-          console.log(city)
           this.setState({ city })
         }).catch(err => {
           throw err
