@@ -23,12 +23,17 @@ const ToggleBar = (props: { id: 1 | 2 | 3 }): JSX.Element => {
   )
 }
 
-export default (): JSX.Element => {
+interface IToggleProps {
+  openMenu: () => void
+}
+export default (props: IToggleProps): JSX.Element => {
+  const { openMenu } = props
   return (
     <button
       style={{
         ...ButtonStyles
       }}
+      onClick={openMenu}
     >
       <ToggleBar id={1} />
       <ToggleBar id={2} />

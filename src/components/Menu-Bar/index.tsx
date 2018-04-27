@@ -10,9 +10,10 @@ interface IMenuBarProps {
   city: string
   time: string
   openAddLocation: () => void
+  openMenu: () => void
 }
 export default (props: IMenuBarProps): JSX.Element => {
-  const { city, openAddLocation, time } = props
+  const { city, openAddLocation, openMenu, time } = props
   return (
     <div
       style={{
@@ -26,7 +27,7 @@ export default (props: IMenuBarProps): JSX.Element => {
         zIndex: 1
       }}
     >
-      <Toggle />
+      <Toggle openMenu={openMenu} />
       <Details city={city} time={time} />
       <AddLocationButton onClick={openAddLocation} />
     </div>
