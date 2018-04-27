@@ -8,6 +8,7 @@ import { DarkGrey } from './styles'
 // Components
 import AddLocation from './components/Add-Location'
 import Main from './components/Main'
+import Menu from './components/Menu'
 import MenuBar from './components/Menu-Bar'
 
 // Mocks
@@ -26,6 +27,7 @@ interface IAppState {
   city: string
   time: string
   addLocationIsOpen: boolean
+  menuIsOpen: boolean
 }
 class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
@@ -34,6 +36,7 @@ class App extends React.Component<{}, IAppState> {
     this.state = { 
       addLocationIsOpen: true,
       city: '...',
+      menuIsOpen: false,
       time: '...'
     }
   }
@@ -47,6 +50,7 @@ class App extends React.Component<{}, IAppState> {
     const {
       addLocationIsOpen,
       city,
+      menuIsOpen,
       time
     } = this.state
     return (
@@ -57,7 +61,13 @@ class App extends React.Component<{}, IAppState> {
           position: 'relative'
         }}
       >
-        <MenuBar city={city} time={time} openAddLocation={this.openAddLocation} />
+        <MenuBar 
+          city={city} 
+          time={time} 
+          openAddLocation={this.openAddLocation} 
+          openMenu={this.openMenu}
+        />
+        <Menu isOpen={menuIsOpen} close={this.closeMenu}/>
         <AddLocation isOpen={addLocationIsOpen} close={this.closeAddLocation}/>
         <Main 
           details={MockDetails}
@@ -102,6 +112,14 @@ class App extends React.Component<{}, IAppState> {
 
   private closeAddLocation = () => {
     this.setState({ addLocationIsOpen: false })
+  }
+
+  private openMenu = () => { 
+    this.setState({ menuIsOpen: true })
+  }
+
+  private closeMenu = () => {
+    this.setState({ menuIsOpen: false })
   }
 }
 
